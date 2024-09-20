@@ -1,6 +1,5 @@
-import { useState } from "react";
-import { Priority, Todo } from "../../services/api";
-
+import { useTodoForm } from "../../hooks/useTodoForm";
+import { Todo } from "../../services/api";
 import styles from "./todoForm.module.css";
 
 export type TodoFormType = Omit<Todo, "id" | "completed">;
@@ -10,25 +9,7 @@ interface TodoFormProps {
 }
 
 export function TodoForm({ onCreateTodo }: TodoFormProps) {
-  const [formData, setFormData] = useState({
-    title: "",
-    description: "",
-    priority: "medium" as Priority,
-  });
-
-  const handleChange = (
-    event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
-  ) => {
-    const { name, value } = event.target;
-    setFormData((prevData) => ({
-      ...prevData,
-      [name]: value,
-    }));
-  };
-
-  const handleSubmit = () => {
-    onCreateTodo(formData);
-  };
+  const { formData, handleChange, handleSubmit } = useTodoForm(onCreateTodo);
 
   return (
     <form className={styles.form} onSubmit={handleSubmit}>
