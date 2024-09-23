@@ -4,7 +4,7 @@ import styles from "./todoForm.module.css";
 
 export type TodoFormType = Omit<Todo, "id" | "completed">;
 
-interface TodoFormProps {
+export interface TodoFormProps {
   onCreateTodo: (newTodo: TodoFormType) => void;
 }
 

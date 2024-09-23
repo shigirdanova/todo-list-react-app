@@ -2,7 +2,7 @@ import { Todo } from "../../services/api";
 import { TodoItem } from "../todoItem/todoItem";
 import styles from "./todoList.module.css";
 
-interface TodoListProps {
+export interface TodoListProps {
   todos: Todo[];
   onUpdateTodo: (updatedTodo: Todo) => void;
   onDeleteTodo: (id: number) => void;

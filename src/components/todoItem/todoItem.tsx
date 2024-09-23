@@ -1,19 +1,19 @@
 import { Todo } from "../../services/api";
 import styles from "./todoItem.module.css";
 
-interface TodoItemProps {
+export interface TodoItemProps {
   todo: Todo;
   onUpdateTodo: (updatedTodo: Todo) => void;
   onDeleteTodo: (id: number) => void;
 }
 
 export function TodoItem({ todo, onUpdateTodo, onDeleteTodo }: TodoItemProps) {
-  const handleToggleCompleted = async () => {
+  const handleToggleCompleted = () => {
     const updatedTodo = { ...todo, completed: !todo.completed };
     onUpdateTodo(updatedTodo);
   };
 
-  const handleDeleteTodo = async () => {
+  const handleDeleteTodo = () => {
     onDeleteTodo(todo.id);
   };
 
